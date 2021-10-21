@@ -8,15 +8,32 @@ export const Stopwatch: React.FC = () => {
   const minOnWatch = Math.floor(duration / 60000);
 
   useEffect(() => {
-    setDuration(Number(prompt("분을 입력해주세요.")) * 60 * 1000);
-
-    const timerInterval = setInterval(() => {
-      setSecond((prev) => (prev === 0 ? 59 : prev - 1));
-      setDuration((prev) => prev - 1000);
+    let timerInterval = setInterval(() => {
+      if (!stopwatchOn) {
+        setSecond((prev) => (prev === 0 ? 59 : prev - 1));
+        setDuration((prev) => prev - 1000);
+      } else if (stopwatchOn) {
+        setSecond((prev) => (prev === 59 ? 0 : prev + 1));
+        setDuration((prev) => prev + 1000);
+      }
     }, 1000);
-  }, []);
+    if (!stopwatchOn) {
+      setDuration(Number(prompt("분을 입력해주세요.")) * 60 * 1000);
+      setSecond(0);
+    } else if (stopwatchOn) {
+      clearInterval(timerInterval);
+      setDuration(0);
+      setSecond(0);
+      timerInterval = setInterval(() => {
+        setSecond((prev) => (prev === 59 ? 0 : prev + 1));
+        setDuration((prev) => prev + 1000);
+      }, 1000);
+    }
+    return () => clearInterval(timerInterval);
+  }, [stopwatchOn]);
 
   console.log("duration:", duration, second);
+  console.log(stopwatchOn);
 
   return (
     <>
@@ -39,6 +56,13 @@ export const Stopwatch: React.FC = () => {
           {minOnWatch < 10 ? `0${minOnWatch}` : minOnWatch}:
           {second < 10 ? `0${second}` : second}
         </Counting>
+        <ChangeModeBtn
+          onClick={() => {
+            setStopwatchOn((prev) => !prev);
+          }}
+        >
+          Stopwatch
+        </ChangeModeBtn>
       </StopwatchBox>
     </>
   );
@@ -60,4 +84,16 @@ const Counting = styled.span`
   transform: translate(-50%, -50%);
   font-size: 5rem;
   font-family: Arial, Helvetica, sans-serif;
+`;
+
+const ChangeModeBtn = styled.button`
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2px 10px;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 10px;
+  cursor: pointer;
 `;
