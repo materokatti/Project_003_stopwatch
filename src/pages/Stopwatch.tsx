@@ -9,13 +9,8 @@ export const Stopwatch: React.FC = () => {
 
   useEffect(() => {
     let timerInterval = setInterval(() => {
-      if (!stopwatchOn) {
-        setSecond((prev) => (prev === 0 ? 59 : prev - 1));
-        setDuration((prev) => prev - 1000);
-      } else if (stopwatchOn) {
-        setSecond((prev) => (prev === 59 ? 0 : prev + 1));
-        setDuration((prev) => prev + 1000);
-      }
+      setSecond((prev) => (prev === 0 ? 59 : prev - 1));
+      setDuration((prev) => prev - 1000);
     }, 1000);
     if (!stopwatchOn) {
       setDuration(Number(prompt("분을 입력해주세요.")) * 60 * 1000);
@@ -60,8 +55,9 @@ export const Stopwatch: React.FC = () => {
           onClick={() => {
             setStopwatchOn((prev) => !prev);
           }}
+          stopwatchOn={stopwatchOn}
         >
-          Stopwatch
+          {stopwatchOn ? "Timer" : "Stopwatch"}
         </ChangeModeBtn>
       </StopwatchBox>
     </>
@@ -86,14 +82,16 @@ const Counting = styled.span`
   font-family: Arial, Helvetica, sans-serif;
 `;
 
-const ChangeModeBtn = styled.button`
+const ChangeModeBtn = styled("button")<{stopwatchOn: boolean}>`
   position: absolute;
   top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 2px 10px;
-  background-color: white;
+  background-color: ${(props) => (props.stopwatchOn ? "white" : "gray")};
+  color: ${(props) => (props.stopwatchOn ? "gray" : "white")};
   border: 1px solid gray;
   border-radius: 10px;
   cursor: pointer;
+  transition: 0.5s ease all;
 `;
