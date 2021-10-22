@@ -12,7 +12,7 @@ export const Main: React.FC = () => {
         <Link to='/todo'>Todo List</Link>
       </InterviewList>
       <InterviewList>
-        <Link to='/taver'>Naver Searching</Link>
+        <Link to='/naversearch'>Naver Searching</Link>
       </InterviewList>
     </MainUl>
   );
