@@ -38,7 +38,32 @@ const GlobalStyle = createGlobalStyle`
   
 `;
 
-export default GlobalStyle;
+export const ListButton = styled.button`
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: inherit;
+  ::focus {
+    outline: none;
+  }
+  ::active {
+    transform: scale(0.98);
+  }
+`;
+
+export const TaskBox = styled.div`
+  background: #f4f4f4;
+  margin: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+`;
 
 export const TestPageContainer = styled.div`
   display: flex;
@@ -50,3 +75,5 @@ export const TestPageContainer = styled.div`
 export const TestTitle = styled.h2`
   margin: 0.83em 0;
 `;
+
+export default GlobalStyle;

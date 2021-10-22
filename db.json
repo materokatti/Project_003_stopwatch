@@ -1,0 +1,28 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "text": "Javascript Study",
+      "day": "2021/10/22",
+      "reminder": true
+    },
+    {
+      "id": 2,
+      "text": "Typescript Study",
+      "day": "2021/10/22",
+      "reminder": true
+    },
+    {
+      "id": 3,
+      "text": "React Study",
+      "day": "2021/10/22",
+      "reminder": true
+    },
+    {
+      "text": "Svelte study",
+      "day": "2021-10-22",
+      "reminder": false,
+      "id": 4
+    }
+  ]
+}

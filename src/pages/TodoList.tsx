@@ -1,25 +1,57 @@
 import React, {useEffect, useState} from "react";
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import styled from "styled-components";
-import {fetchTasks, postFetchTasks} from "../data/fetch";
+import {
+  fetchTask,
+  postFetchTasks,
+  deleteFetchTasks,
+  putFetchTasks,
+} from "../data/fetch";
 import {Header} from "../components/Header";
+import AddTask from "../components/AddTast";
+import Tasks from "../components/Tasks";
+import About from "../components/About";
+import Footer from "../components/Footer";
 
 export const TodoList = () => {
   const [showAddTask, setShowAddTask] = useState<boolean>(false);
-  const [tasks, setTasks] = useState<any[]>([]);
+  const [tasks, setTasks] = useState<any>({});
 
   useEffect(() => {
     const getTasks = async () => {
-      const tasksFromServer = await fetchTasks();
+      const tasksFromServer = await fetchTask();
       setTasks(tasksFromServer);
+      console.log("cdm: ", tasksFromServer);
     };
     getTasks();
   }, []);
 
-  const addTask = async (task: Array<any>) => {
+  console.log("tasks:", tasks);
+
+  const addTask = async (task: any[]) => {
     const data = await postFetchTasks(task);
 
     setTasks([...tasks, data]);
+  };
+
+  const deleteTask = async (id: number) => {
+    const res = await deleteFetchTasks(id);
+    res.status === 200
+      ? setTasks(tasks.filter((task: any) => task.id !== id))
+      : alert("Error Deleting This Task");
+  };
+
+  const toggleReminder = async (id: number) => {
+    const taskToToggle = await fetchTask(id);
+    const updateTask = {...taskToToggle, reminder: !taskToToggle.reminder};
+
+    const data = await putFetchTasks(id, updateTask);
+
+    setTasks(
+      tasks.map((task: any) =>
+        task.id === id ? {...task, reminder: data.reminder} : task
+      )
+    );
   };
 
   return (
@@ -49,7 +81,7 @@ export const TodoList = () => {
           )}
         />
         <Route path='/about' component={About} />
-        {/* <Footer /> */}
+        <Footer />
       </ListContainer>
     </Router>
   );
