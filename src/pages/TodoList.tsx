@@ -10,8 +10,8 @@ import {
 import {Header} from "../components/Header";
 import AddTask from "../components/AddTast";
 import Tasks from "../components/Tasks";
-import About from "../components/About";
-import Footer from "../components/Footer";
+// import About from "../components/About";
+// import Footer from "../components/Footer";
 
 export const TodoList = () => {
   const [showAddTask, setShowAddTask] = useState<boolean>(false);
@@ -41,19 +41,29 @@ export const TodoList = () => {
       : alert("Error Deleting This Task");
   };
 
-  // const editTask = async(id: number) => {
-  //   const taskToEdit = await fetchTask(id);
-  // }
-
-  const toggleReminder = async (id: number) => {
-    const taskToToggle = await fetchTask(id);
-    const updateTask = {...taskToToggle, reminder: !taskToToggle.reminder};
+  const editTask = async (id: number, editData: string) => {
+    const taskToEdit = await fetchTask(id);
+    const updateTask = {...taskToEdit, text: editData};
 
     const data = await putFetchTasks(id, updateTask);
 
     setTasks(
       tasks.map((task: any) =>
-        task.id === id ? {...task, reminder: data.reminder} : task
+        task.id === id ? {...task, text: data.text} : task
+      )
+    );
+    console.log("tasks", tasks);
+  };
+
+  const toggleChecker = async (id: number) => {
+    const taskToToggle = await fetchTask(id);
+    const updateTask = {...taskToToggle, checker: !taskToToggle.checker};
+
+    const data = await putFetchTasks(id, updateTask);
+
+    setTasks(
+      tasks.map((task: any) =>
+        task.id === id ? {...task, checker: data.checker} : task
       )
     );
   };
@@ -76,7 +86,8 @@ export const TodoList = () => {
                 <Tasks
                   tasks={tasks}
                   onDelete={deleteTask}
-                  onToggle={toggleReminder}
+                  onToggle={toggleChecker}
+                  onEdit={editTask}
                 />
               ) : (
                 "No Tasks To Show"

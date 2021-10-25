@@ -9,7 +9,7 @@ interface Props {
 const AddTask: React.FC<Props> = ({onAdd}) => {
   const [text, setText] = useState<string>("");
   const [day, setDay] = useState<string>("");
-  const [reminder, setReminder] = useState<any>(false);
+  const [checker, setChecker] = useState<any>(false);
 
   const onSubmit = (e: any) => {
     e.preventDefault();
@@ -19,11 +19,13 @@ const AddTask: React.FC<Props> = ({onAdd}) => {
       return;
     }
 
-    onAdd({text, day, reminder});
+    console.log("data: ", text, day, checker);
+
+    onAdd({text, day, checker});
 
     setText("");
     setDay("");
-    setReminder(false);
+    setChecker(false);
   };
 
   return (
@@ -47,12 +49,12 @@ const AddTask: React.FC<Props> = ({onAdd}) => {
         />
       </FormControl>
       <FormControlCheck>
-        <label>Set Reminder</label>
+        <label>Set Checker</label>
         <input
           type='checkbox'
-          checked={reminder}
-          value={reminder}
-          onChange={(e) => setReminder(e.currentTarget.checked)}
+          checked={checker}
+          value={checker}
+          onChange={(e) => setChecker(e.currentTarget.checked)}
         />
       </FormControlCheck>
 

@@ -4,25 +4,25 @@
       "id": 1,
       "text": "Javascript Study",
       "day": "2021/10/22",
-      "reminder": true
+      "checker": true
     },
     {
       "id": 2,
       "text": "Typescript Study",
       "day": "2021/10/22",
-      "reminder": true
-    },
-    {
-      "id": 3,
-      "text": "React Study",
-      "day": "2021/10/22",
-      "reminder": false
+      "checker": true
     },
     {
       "text": "Svelte study",
       "day": "2021-10-22",
-      "reminder": false,
+      "checker": false,
       "id": 4
+    },
+    {
+      "text": "React Study",
+      "day": "2021-10-28",
+      "checker": false,
+      "id": 5
     }
   ]
 }
