@@ -16,7 +16,7 @@
       "id": 3,
       "text": "React Study",
       "day": "2021/10/22",
-      "reminder": true
+      "reminder": false
     },
     {
       "text": "Svelte study",

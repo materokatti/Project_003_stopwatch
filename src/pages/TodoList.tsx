@@ -41,6 +41,10 @@ export const TodoList = () => {
       : alert("Error Deleting This Task");
   };
 
+  // const editTask = async(id: number) => {
+  //   const taskToEdit = await fetchTask(id);
+  // }
+
   const toggleReminder = async (id: number) => {
     const taskToToggle = await fetchTask(id);
     const updateTask = {...taskToToggle, reminder: !taskToToggle.reminder};
@@ -80,8 +84,8 @@ export const TodoList = () => {
             </>
           )}
         />
-        <Route path='/about' component={About} />
-        <Footer />
+        {/* <Route path='/about' component={About} />
+        <Footer /> */}
       </ListContainer>
     </Router>
   );
