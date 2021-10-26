@@ -13,7 +13,12 @@ export const Stopwatch: React.FC = () => {
       setDuration((prev) => prev - 1000);
     }, 1000);
     if (!stopwatchOn) {
-      setDuration(Number(prompt("분을 입력해주세요.")) * 60 * 1000);
+      let minuteInput = prompt("분을 입력해주세요.");
+      if (!minuteInput) {
+        alert("1 이상의 숫자를 입력해주세요");
+        minuteInput = "60";
+      }
+      setDuration(Number(minuteInput) * 60 * 1000);
       setSecond(0);
     } else if (stopwatchOn) {
       clearInterval(timerInterval);

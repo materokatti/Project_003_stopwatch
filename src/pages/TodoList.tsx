@@ -74,7 +74,7 @@ export const TodoList = () => {
         <Header
           onAdd={() => setShowAddTask(!showAddTask)}
           showAdd={showAddTask}
-          title='Task Tracker'
+          title='Todo List'
         />
         <Route
           path='/todo'

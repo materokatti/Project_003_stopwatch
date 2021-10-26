@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 export const Main: React.FC = () => {
   return (
     <MainUl>
+      <div />
       <InterviewList>
         <Link to='/stopwatch'>Stopwatch</Link>
       </InterviewList>
@@ -12,15 +13,17 @@ export const Main: React.FC = () => {
         <Link to='/todo'>Todo List</Link>
       </InterviewList>
       <InterviewList>
-        <Link to='/naversearch'>Naver Searching</Link>
+        <Link to='/naversearch'>Naver Search</Link>
       </InterviewList>
+      <div />
     </MainUl>
   );
 };
 
 const MainUl = styled.ul`
+  padding: 50px 50px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-row: repeat(5, 1fr);
   align-items: center;
   justify-content: center;
   min-height: 100vh;
@@ -28,4 +31,9 @@ const MainUl = styled.ul`
 
 const InterviewList = styled.li`
   text-align: center;
+  transition: 0.3s ease all;
+  font-size: 2rem;
+  :hover {
+    transform: scale(2);
+  }
 `;

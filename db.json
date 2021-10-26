@@ -8,21 +8,9 @@
     },
     {
       "id": 2,
-      "text": "Typescript Study",
+      "text": "Vue Study",
       "day": "2021/10/22",
-      "checker": true
-    },
-    {
-      "text": "Svelte study",
-      "day": "2021-10-22",
-      "checker": false,
-      "id": 4
-    },
-    {
-      "text": "React Study",
-      "day": "2021-10-28",
-      "checker": false,
-      "id": 5
+      "checker": false
     }
   ]
 }

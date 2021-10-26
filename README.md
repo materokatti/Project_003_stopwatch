@@ -1,46 +1,104 @@
-# Getting Started with Create React App
+# 프로젝트 개요
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- 웹타이머 구현
 
-## Available Scripts
+- 리액트를 이용한 todo-list 웹앱
 
-In the project directory, you can run:
+- 네이버 실시간 검색어 추출하는 웹앱 또는 api(function)
 
-### `yarn start`
+  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 실행방법
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+#### Project setup
 
-### `yarn test`
+#### `npm install`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Json.server Start
 
-### `yarn build`
+#### `npm run server`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Project Start
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### `npm start`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Basic requirements
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. ✅ 웹타이머 구현
+   - ✅ 스탑워치 기능
+   - ✅ 타이머 기능
+   - 🚫(선택) 백그라운드 동작
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+2. ✅ 리액트를 이용한 todo-list 웹앱
+   - ✅ 리스트 체크
+   - ✅ 리스트 수정
+   - ✅ (선택) 리스트 비활성화
+   - 🚫 (선택) 리스트 순서 변경
+   - 🚫 (선택) 단위 테스트(jest)
+   - ✅ (선택) Hook 기반 작성
+   - 🚫 (선택) Context 및 전역 스토어 사용
+3. 🚫 (추가 예정) 네이버 실시간 검색어 추출하는 웹앱 또는 api(function)
+   - 🚫 네이버 실시간 검색어 추출
+   - 🚫 (선택)24시간 안에 시간대별로 검색어 추출
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Skills
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- React, Typescript, Styled Components, ES6+
+
+  
+
+## 구현 기능 상세
+
+##### 일반
+
+- React-router-dom을 이용한 페이지 전환
+- Styled-component를 활용한 컴포넌트 스타일링
+
+##### 웹타이머 구현
+
+- 원하는 시간 입력(prompt) 후 동작하는 타이머
+- 0초 부터 버튼을 누를 때까지 시간을 계산하는 스탑워치 기능
+- 버튼을 통해 타이머와 스탑워치 기능 전환
+
+##### 리액트를 이용한 todo-list 웹앱
+
+- Json.server 를 이용한 가상 백엔드 구성
+- Add 버튼을 통해 task 추가
+- task 더블 클릭을 통한 체크
+- 삭제 버튼을 통한 task 삭제
+- 수정 버튼을 통한 task 수정
+
+##### (추가 예정)네이버 실시간 검색어 추출하는 웹앱 또는 api(function)
+
+- 
+
+## 시연 gif
+
+#### 웹타이머 구현
+
+- 타이머
+
+![timer](/public/assets/timer.gif)
+
+- 스탑워치
+
+![stopwatch](/public/assets/stopwatch.gif)
+
+#### 리액트를 이용한 todo-list 웹앱
+
+- Task 추가
+
+![addTask](/public/assets/addTask.gif)
+
+- Task 체크, 삭제
+
+![checkDelete](/public/assets/checkDelete.gif)
+
+- Task 수정
+
+![editTask](/public/assets/editTask.gif)
+
